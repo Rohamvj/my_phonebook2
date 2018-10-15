@@ -9,6 +9,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.sql.*;
@@ -72,7 +73,8 @@ public class Main extends Application {
 
     public void start(Stage primaryStage) throws Exception {
 
-       /* Button btnViewObj = new Button("View");
+        Button btnViewObj = new Button("View");
+        Button btnBack = new Button("<Back");
 
         ListView PersonList = new ListView();
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -83,9 +85,24 @@ public class Main extends Application {
 
             PersonList.getItems().add(PersonResult.getString(1) + "-" + PersonResult.getString(2) + " " + PersonResult.getString(3) + " /" + PersonResult.getString(4));
         }
-*/
+        GridPane persongride = new GridPane();
+        Scene PersonScene = new Scene(persongride, 400, 500);
 
-        Button btnSend = new Button("Send");
+        btnViewObj.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                // Personal Informations - Scene
+
+                persongride.addRow(4, btnBack);
+                primaryStage.setTitle("Person Informations");
+                primaryStage.setScene(PersonScene);
+                primaryStage.show();
+            }
+        });
+        
+
+      /*  Button btnSend = new Button("Send");
 
         TextField NameObj = new TextField();
         TextField FamilyObj = new TextField();
@@ -105,6 +122,7 @@ public class Main extends Application {
 
             listView.getItems().add(nametmp + " " + familytmp + "  " + Phonenumtmp);
 
+
         });
 
 
@@ -113,24 +131,24 @@ public class Main extends Application {
         gridPanea.addRow(2, lblFamily, FamilyObj);
         gridPanea.addRow(3,lblPhonenum, PhoneNumObj);
         gridPanea.addRow(4, btnSend);
-        gridPanea.addRow(5, listView);
+        gridPanea.addRow(5, listView);*/
 
 
-      /*  GridPane gridPane = new GridPane();
+        GridPane gridPane = new GridPane();
         gridPane.addRow(1, PersonList);
         gridPane.addRow(1, btnViewObj);
-        Scene scene = new Scene(gridPane);
+       /* Scene scene = new Scene(gridPane);
         primaryStage.setTitle("Phone Book");
         primaryStage.setScene(scene);
         primaryStage.show();*/
 
 
-        Scene scene = new Scene(gridPanea, 400, 600);
+        Scene scene = new Scene(gridPane, 400, 600);
         primaryStage.setTitle("Phone Book");
         primaryStage.setScene(scene);
         primaryStage.show();
 
-
+        btnBack.setOnAction(event -> primaryStage.setScene(scene));
     }
 
 

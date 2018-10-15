@@ -18,7 +18,6 @@ public class Main extends Application {
     public static void main(String[] args) {
 
 
-
 // Read From Database
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -72,6 +71,7 @@ public class Main extends Application {
 
 
     public void start(Stage primaryStage) throws Exception {
+
        /* Button btnViewObj = new Button("View");
 
         ListView PersonList = new ListView();
@@ -86,8 +86,6 @@ public class Main extends Application {
 */
 
         Button btnSend = new Button("Send");
-        Button btnUpdate = new Button("Update");
-
 
         TextField NameObj = new TextField();
         TextField FamilyObj = new TextField();
@@ -97,30 +95,26 @@ public class Main extends Application {
         Label lblFamily = new Label("Family:");
         Label lblPhonenum = new Label("Phone Number:");
 
-       
-
-
 
         ListView listView = new ListView();
-        btnSend.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+        btnSend.setOnAction(event -> {
 
-                String nametmp = NameObj.getText();
-                String familytmp = FamilyObj.getText();
-                String Phonenumtmp = PhoneNumObj.getText();
+            String nametmp = NameObj.getText();
+            String familytmp = FamilyObj.getText();
+            String Phonenumtmp = PhoneNumObj.getText();
 
-                listView.getItems().add(nametmp + " " + familytmp + " /" + Phonenumtmp);
+            listView.getItems().add(nametmp + " " + familytmp + "  " + Phonenumtmp);
 
-            }
         });
 
 
         GridPane gridPanea = new GridPane();
-        gridPanea.addRow(0, lblName, NameObj, lblFamily, FamilyObj, lblPhonenum, PhoneNumObj);
-        gridPanea.addRow(1, btnSend);
-        gridPanea.addRow(2, listView);
-        gridPanea.addRow(3,btnUpdate);
+        gridPanea.addRow(1, lblName, NameObj);
+        gridPanea.addRow(2, lblFamily, FamilyObj);
+        gridPanea.addRow(3,lblPhonenum, PhoneNumObj);
+        gridPanea.addRow(4, btnSend);
+        gridPanea.addRow(5, listView);
+
 
       /*  GridPane gridPane = new GridPane();
         gridPane.addRow(1, PersonList);
@@ -131,7 +125,7 @@ public class Main extends Application {
         primaryStage.show();*/
 
 
-        Scene scene = new Scene(gridPanea, 600, 600);
+        Scene scene = new Scene(gridPanea, 400, 600);
         primaryStage.setTitle("Phone Book");
         primaryStage.setScene(scene);
         primaryStage.show();

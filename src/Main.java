@@ -15,8 +15,8 @@ import java.sql.*;
 
 public class Main extends Application {
 
-
     public static void main(String[] args) {
+
 
 
 // Read From Database
@@ -72,7 +72,7 @@ public class Main extends Application {
 
 
     public void start(Stage primaryStage) throws Exception {
-        Button btnViewObj = new Button("View");
+       /* Button btnViewObj = new Button("View");
 
         ListView PersonList = new ListView();
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -83,46 +83,61 @@ public class Main extends Application {
 
             PersonList.getItems().add(PersonResult.getString(1) + "-" + PersonResult.getString(2) + " " + PersonResult.getString(3) + " /" + PersonResult.getString(4));
         }
+*/
 
-/*
         Button btnSend = new Button("Send");
+        Button btnUpdate = new Button("Update");
+
 
         TextField NameObj = new TextField();
         TextField FamilyObj = new TextField();
         TextField PhoneNumObj = new TextField();
 
-        Label lblName = new Label("Name");
-        Label lblFamily = new Label("Family");
+        Label lblName = new Label("Name:");
+        Label lblFamily = new Label("Family:");
+        Label lblPhonenum = new Label("Phone Number:");
+
+       
+
+
 
         ListView listView = new ListView();
         btnSend.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                String name = NameObj.getText();
-                String family = FamilyObj.getText();
 
-                listView.getItems().add(name + " " + family);
+                String nametmp = NameObj.getText();
+                String familytmp = FamilyObj.getText();
+                String Phonenumtmp = PhoneNumObj.getText();
+
+                listView.getItems().add(nametmp + " " + familytmp + " /" + Phonenumtmp);
+
             }
-        });*/
-/*
-        GridPane gridPane = new GridPane();
+        });
 
-        gridPane.addRow(0, btnSend, lblName, NameObj, lblFamily, FamilyObj);
 
-        gridPane.addColumn(5, listView);
-*/
-        GridPane gridPane = new GridPane();
+        GridPane gridPanea = new GridPane();
+        gridPanea.addRow(0, lblName, NameObj, lblFamily, FamilyObj, lblPhonenum, PhoneNumObj);
+        gridPanea.addRow(1, btnSend);
+        gridPanea.addRow(2, listView);
+        gridPanea.addRow(3,btnUpdate);
+
+      /*  GridPane gridPane = new GridPane();
         gridPane.addRow(1, PersonList);
         gridPane.addRow(1, btnViewObj);
         Scene scene = new Scene(gridPane);
         primaryStage.setTitle("Phone Book");
         primaryStage.setScene(scene);
+        primaryStage.show();*/
+
+
+        Scene scene = new Scene(gridPanea, 600, 600);
+        primaryStage.setTitle("Phone Book");
+        primaryStage.setScene(scene);
         primaryStage.show();
 
 
-        /*Scene scene = new Scene(gridPane, 600, 600);
-        primaryStage.setTitle("Phone Book");
-        primaryStage.setScene(scene);
-        primaryStage.show();*/
     }
+
+
 }
